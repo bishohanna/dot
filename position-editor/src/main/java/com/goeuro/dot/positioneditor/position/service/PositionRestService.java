@@ -53,7 +53,7 @@ public class PositionRestService {
                                                       @RequestParam(value = "startIndex", defaultValue = "1") int startIndex) {
         try {
 
-            PagedResponse<Position> searchPage = positionRepository.searchInBranchByName(branchId, positionName, startIndex -1, pageSize);
+            PagedResponse<Position> searchPage = positionRepository.searchInBranchByName(branchId, positionName, startIndex - 1, pageSize);
 
             return ServiceResponse.success(searchPage.getItems(), startIndex, pageSize, searchPage.getTotalItems());
 
@@ -97,7 +97,7 @@ public class PositionRestService {
             if (!CollectionUtils.isEmpty(positionsWrapper.getPositions()) || positionsWrapper.getBranch() == null) {
 
                 List savedPositions = positionsWrapper.getPositions()
-                        .parallelStream()
+                        .stream()
                                 //on not null positions (to make sure)
                         .filter(position -> position != null)
                                 //add branch to positions
@@ -106,14 +106,7 @@ public class PositionRestService {
                         .filter(position ->
                                 !positionRepository.isPositionInBranch(position.getGoEuroId(), position.getBranch().getId()))
                                 //save each position
-                        .map(position -> {
-
-                            try {
-                                return positionRepository.saveOrUpdate(position);
-                            } catch (Exception ex) {
-                                return Optional.empty();
-                            }
-                        })
+                        .map(position -> positionRepository.saveOrUpdate(position))
                                 //get only saved positions without error
                         .filter(savedPosition -> savedPosition.isPresent())
                                 //convert to real positions

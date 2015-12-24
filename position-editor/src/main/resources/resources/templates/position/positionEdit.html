@@ -10,9 +10,10 @@
     </div>
 
     <div layout-gt-sm="row">
-        <uib-pagination total-items="totalPositionCount" ng-model="currentPositionPage"
+        <uib-pagination total-items="totalPositionCount"
+                        ng-model="currentPositionPage"
                         items-per-page="20"
-                        max-size="10"
+                        max-size="5"
                         ng-if="expandEdit && savedPositions.length>0"
                         class="pagination-sm paginator"
                         boundary-links="true" ng-change="reloadBranchPositions(currentPositionPage)"></uib-pagination>
