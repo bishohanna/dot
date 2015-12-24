@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOT - Goeuro DB editor</title>
+
+    <!--JS Libraris Includes-->
+    <script language="JavaScript" src="../resources/js/libs/angular.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-route.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-aria.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-animate.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-material.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-ui-router.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/jquery.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/bootstrap.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/lodash.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-simple-logger.min.js"></script>
+    <script language="JavaScript" src="../resources/js/libs/angular-google-maps.min.js"></script>
+
+
+    <!--JS App config includes-->
+    <script language="JavaScript" src="../resources/js/app/app.js"></script>
+    <script language="JavaScript" src="../resources/js/app/service.js"></script>
+
+    <!--Add Controllers-->
+    <script language="JavaScript" src="../resources/js/app/controller/branchController.js"></script>
+    <script language="JavaScript" src="../resources/js/app/controller/toolBarController.js"></script>
+    <script language="JavaScript" src="../resources/js/app/controller/position/positionEditcontroller.js"></script>
+    <script language="JavaScript"
+            src="../resources/js/app/controller/position/positionGoeuroFilterController.js"></script>
+    <script language="JavaScript" src="../resources/js/app/controller/position/positionMapController.js"></script>
+
+    <!--CSS Includes-->
+    <link rel="stylesheet" href="../resources/css/angular-material.min.css" media="screen"/>
+    <link rel="stylesheet" href="../resources/css/angular-material.layouts.min.css" media="screen"/>
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" href="../resources/css/styles.css" media="screen"/>
+</head>
+<body ng-app="dotApp" ng-cloak class="col-md-12 mainBody">
+
+<!--Border-->
+<div class="col-md-12 border">
+    <img ng-src="/resources/images/dot.png">
+
+    <h1>DOT</h1>
+</div>
+
+
+<!--Main dynamic view-->
+<div class="mainContent col-md-12" ui-view="mainView" ng-if="!editBranch"></div>
+
+<div class="col-md-12" ui-view="toolBarView" ng-if="editBranch" style="padding: 0"></div>
+
+
+<div ng-if="editBranch" style="height: 86%;">
+    <!--View for querying Goeuro DB-->
+    <div class="col-md-2 goeuroFilter" ui-view="leftView" ng-if="!expandEdit">
+    </div>
+
+    <!--View for Map-->
+    <div class="col-md-8" ui-view="middleView" style="padding: 0">
+    </div>
+
+    <!--View for editing-->
+    <div ng-class="expandEdit ? 'col-md-4' : 'col-md-2'" ui-view="rightView">
+    </div>
+
+</div>
+</body>
+</html>

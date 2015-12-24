@@ -1,0 +1,102 @@
+.mainBody {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+.border {
+    margin: 0px;
+    color: #ffffff;
+    background-color: slategray;
+    height: 73px;
+    padding-top: 15px
+}
+
+.border h1 {
+    display: inline;
+    font-family: sans-serif;
+}
+
+.border img {
+    width: 50px;
+    height: 50px;
+}
+
+.mainContent {
+    padding: 0;
+}
+
+.branchChooseList {
+    color: #000000;
+    padding: 20px;
+}
+
+.branchChooseList h1 {
+    font-family: sans-serif;
+}
+
+.createBranchForm {
+    padding: 20px;
+}
+
+.goeuroFilter {
+    padding-top: 5px;
+    background-color: #dfdfdf;
+    height: 100%;
+}
+
+.filteredPositions {
+    height: 702px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.filteredPositions::-webkit-scrollbar {
+    width: 12px;
+}
+
+.filteredPositions::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.filteredPositions::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.angular-google-map-container {
+    height: 852px;
+    padding: 0;
+    margin: 0
+}
+
+.controlButton {
+    width: 34px !important;
+    height: 32px !important;
+    background-color: #e6e6e6 !important;
+    color: #080808 !important;
+    font-size: smaller !important;
+}
+
+.submitButton {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+}
+
+.smallSearch {
+    width: 200px !important;
+}
+
+.largeSearch {
+    width: 520px !important;
+}
+
+.paginator {
+    margin: 0;
+}

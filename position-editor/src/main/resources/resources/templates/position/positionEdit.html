@@ -1,0 +1,69 @@
+<div ng-controller="positionEditController">
+
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <input ng-model="positionNameFilter" placeholder="Search For Position"
+                   ng-class="{largeSearch: expandEdit, smallSearch: !expandEdit}">
+            <md-button class="md-fab md-mini md-primary" ng-click="reloadBranchPositions('1')">Go
+            </md-button>
+        </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+        <uib-pagination total-items="totalPositionCount" ng-model="currentPositionPage"
+                        items-per-page="20"
+                        max-size="10"
+                        ng-if="expandEdit && savedPositions.length>0"
+                        class="pagination-sm paginator"
+                        boundary-links="true" ng-change="reloadBranchPositions(currentPositionPage)"></uib-pagination>
+    </div>
+
+    <div class="filteredPositions">
+
+        <md-progress-circular md-mode="indeterminate" md-diameter="96"
+                              ng-show="loadingBranchPositions"></md-progress-circular>
+        <md-list ng-cloak ng-show="!loadingBranchPositions">
+            <md-radio-group ng-model="selectedPosition" class="md-primary" ng-change="showPositionOnMap()">
+
+                <div ng-repeat="savedPosition in savedPositions">
+                    <div flex layout='row' layout-align="start right">
+
+                        <md-radio-button flex
+                                         ng-value="savedPosition"
+                                         ng-if="expandEdit"
+                                         class="md-primary" style="margin-top: 20px;font-weight: 600;margin-left: 15px">
+                            {{savedPosition.name}}
+                            <span ng-if="expandEdit" style="font-weight: lighter;font-size: small">{{savedPosition.latitude}},{{savedPosition.longitude}}</span>
+                        </md-radio-button>
+
+                        <md-list-item ng-if="!expandEdit">
+                            <p>{{savedPosition.name}} </p>
+                        </md-list-item>
+
+
+                        <md-button class="md-primary"
+                                   ng-if="expandEdit"
+                                   ng-click="openEditPositionWindow(savedPosition)">
+                            Edit Details
+                        </md-button>
+
+                        <md-switch ng-model="savedPosition.markedDeleted" aria-label="markDeleted"
+                                   ng-if="expandEdit"
+                                   ng-change="updateAndReplacePosition(savedPosition)">
+                            Mark deleted
+                        </md-switch>
+
+
+                        <md-button class="md-fab md-mini md-primary controlButton"
+                                   ng-click="removeFromBranch(savedPosition)" style="margin-top: 10px">
+                            x
+                        </md-button>
+                    </div>
+                </div>
+
+            </md-radio-group>
+
+
+        </md-list>
+    </div>
+</div>

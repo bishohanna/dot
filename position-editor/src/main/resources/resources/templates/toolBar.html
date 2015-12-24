@@ -1,0 +1,39 @@
+<div style="background-color: #a4a4a4" ng-controller="toolBarController">
+
+    <md-content style="background-color: #a4a4a4">
+        <section class="col-md-12">
+
+            <!--Types buttons-->
+            <md-select ng-model="editType" class="col-md-2"
+                       style="margin-top: 10px;margin-bottom: 20px">
+                <md-option value="positiontype" selected="true">
+                    Position
+                </md-option>
+                <md-option value="trainstationtype">
+                    Train-Station
+                </md-option>
+                <md-option value="busstationType">
+                    Bus-Station
+                </md-option>
+                <md-option value="airportType">
+                    Airport
+                </md-option>
+            </md-select>
+
+            <!--Global Controls-->
+            <md-switch ng-model="expandEdit" class="col-md-3" aria-label="expandEdit" ng-change="toggleExpandEdit()">
+                Edit Mode
+            </md-switch>
+
+            <div class="col-md-2 pull-right" style="font-size: small">
+                <span class="col-md-12">{{selectedBranch.name}}</span>
+                <md-button class="md-primary md-raised col-md-12" ng-click="changeToBranchesState()">Switch
+                    Branches
+                </md-button>
+
+            </div>
+        </section>
+
+    </md-content>
+
+</div>

@@ -1,0 +1,16 @@
+<div ng-controller="positionMapController">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds" options="mapOptions"
+                        control="map.control">
+
+        <ui-gmap-markers models="goeuroPositionsMarkers" ng-if="goeuroPositionsMarkers.length>0 && !expandEdit" coords="'self'"
+                         icon="'iconUrl'" options="'options'"
+                         idkey="'goEuroId'" fit="true">
+        </ui-gmap-markers>
+
+        <ui-gmap-marker ng-if="expandEdit && editPositionMarker!=null" coords="editPositionMarker.coords"
+                        options="editPositionMarker.options"
+                        events="editPositionMarker.events" idkey="editPositionMarker.id">
+        </ui-gmap-marker>
+
+    </ui-gmap-google-map>
+</div>

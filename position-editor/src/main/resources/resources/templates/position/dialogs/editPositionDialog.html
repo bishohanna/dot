@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit Position: {{selectedPosition.name}}</h3>
+</div>
+<form name="positionEditForm" ng-submit="positionEditForm.$valid && ok()">
+
+    <div class="modal-body">
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Position Name</label>
+                <input ng-model="selectedPosition.name" required>
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Latitude</label>
+                <input ng-model="selectedPosition.latitude" required ng-pattern="/^\-?\d+(\.)\d+$/">
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Longitude</label>
+                <input ng-model="selectedPosition.longitude" required ng-pattern="/^\-?\d+(\.)\d+$/">
+            </md-input-container>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="submitButton" value="Save"/>
+    </div>
+</form>

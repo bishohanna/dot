@@ -1,0 +1,29 @@
+<div ng-controller="positionGoeuroFilterController">
+
+    <div layout-gt-sm="row">
+        <md-input-container>
+            <input ng-model="positionNameFilter" placeholder="Search For GoEuro Position" style="width: 220px">
+            <md-button class="md-fab md-mini md-primary" ng-click="findPositionsByName(positionNameFilter)">Go
+            </md-button>
+        </md-input-container>
+    </div>
+
+    <div class="filteredPositions">
+        <md-progress-circular md-mode="indeterminate" md-diameter="96"
+                              ng-show="loadingGoeuroPositions"></md-progress-circular>
+        <md-list ng-cloak ng-show="!loadingGoeuroPositions">
+            <md-list-item ng-repeat="goeuroPosition in goeuroPositions | filter : positionNameFilter">
+                <p> {{ goeuroPosition.name }} </p>
+                <md-checkbox class="md-secondary" ng-model="goeuroPosition.selected" ng-change="handleGoeuroPositionSelection(goeuroPosition)"></md-checkbox>
+            </md-list-item>
+        </md-list>
+    </div>
+
+    <md-checkbox ng-model="allGoeuroPositions" aria-label="selectAll" ng-if="goeuroPositions.length>0"
+                 ng-change="selectAllPositions(allGoeuroPositions)">
+        Select All
+    </md-checkbox>
+    <md-button class="md-raised md-primary pull-right" ng-if="goeuroPositions.length>0"
+               ng-click="addSelectedPositionsToBranch()">Add to my Branch
+    </md-button>
+</div>
